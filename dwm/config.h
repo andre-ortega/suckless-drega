@@ -30,8 +30,7 @@ static const unsigned int borderalpha = OPAQUE;
 /*	[SchemeSel]  = { col_gray4, col_gray2,  col_cyan  },*/
 /*};*/
 
-//#include "/home/xelius/.cache/wal/colors-wal-dwm.h"
-#include "/home/roe/.local/src/tahsin-suckless/dwm/colors-wal-dwm.h"
+#include "/home/roe/git/suckless-drega/dwm/colors-wal-dwm.h"
 
 static const unsigned int alphas[][3]      = {
     /*               fg      bg        border*/
@@ -45,7 +44,7 @@ static const char *const autostart[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "󰣇", "󰈹", "", "", "󰣇", "", ""};
+static const char *tags[] = { "󰣇", "󰈹", "", "", "", "", ""};
 //static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {

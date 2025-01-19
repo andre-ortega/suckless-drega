@@ -30,7 +30,7 @@ static const char *prompt      = NULL;      /* -p  option; prompt to the left of
 /*};*/
 
 //#include "/home/xelius/.cache/wal/colors-wal-dmenu.h"
-#include "/home/roe/.local/src/Suckless/dmenu/colors-wal-dmenu.h"
+#include "/home/roe/git/suckless-drega/dmenu/colors-wal-dmenu.h"
 
 static const unsigned int alphas[SchemeLast][2] = {
 	[SchemeNorm] = { OPAQUE, alpha },
