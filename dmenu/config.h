@@ -2,7 +2,7 @@
 /* Default settings; can be overriden by command line. */
 
 static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
-static const unsigned int alpha = 0x80;     /* Amount of opacity. 0xff is opaque             */
+static const unsigned int alpha = 0xff;     /* Amount of opacity. 0xff is opaque             */
 static int centered = 1;                    /* -c option; centers dmenu on screen */
 static int min_width = 200;                    /* minimum width when centered */
 static const float menu_height_ratio = 2.0f;  /* This is the ratio used in the original calculation */
