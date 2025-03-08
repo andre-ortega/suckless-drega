@@ -45,7 +45,7 @@ static const char *const autostart[] = {
 
 /* tagging */
 static const char *tags[] = { "󰣇", "󰈹", "", "", "", "", ""};
-//static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+//static const char *tags[] = { "", "󰈹", ", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -87,7 +87,6 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", NULL};
 static const char *termcmd[]  = { "st", NULL };
 static const char *firefoxcmd[]  = { "firefox", NULL };
-static const char *saracmd[]  = { "sara", NULL };
 
 /* Knob vol */
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
@@ -104,7 +103,6 @@ static const Key keys[] = {
   { MODKEY,                       XK_BackSpace,spawn,        {.v = dmenucmd } },
 	{ MODKEY,                       XK_space,  spawn,          {.v = termcmd } },
   { MODKEY,                       XK_p,      spawn,          {.v = firefoxcmd } },
-  { MODKEY,                       XK_c,      spawn,          {.v = saracmd } },
 //{ MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("st -e ranger")},
   { MODKEY,                       XK_f,      zoom,           {0} },
 //{ MODKEY|ShiftMask,             XK_F10,    spawn,          SHCMD("st -e cava")},
