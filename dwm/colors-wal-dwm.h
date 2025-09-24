@@ -4,7 +4,8 @@ static const char norm_border[] = "#000000";
 
 static const char sel_fg[] = "#decfc5";
 static const char sel_bg[] = "#96533C";
-static const char sel_border[] = "#decfc5";
+//static const char sel_border[] = "#decfc5";
+static const char sel_border[] = "#88889b"; // custom active border
 
 //static const char urg_fg[] = "#decfc5";
 //static const char urg_bg[] = "#62524F";
