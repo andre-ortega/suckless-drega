@@ -13,8 +13,6 @@ static const char *altbarcmd        = "$HOME/.config/polybar/bar.sh"; /* Alterna
 static const int vertpad            = 0;       /* vertical padding of bar */
 static const int sidepad            = 0;       /* horizontal padding of bar */
 static const int user_bh            = 35;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-//static const char *fonts[]          = { "Lekton Nerd Font:style=Regular:size=12" };
-//static const char dmenufont[]       = "Monofur Nerd Font Mono:style=Regular:size=12";
 static const char *fonts[]          = { "JetBrainsMonoNL Nerd Font:size=11", "JoyPixels:pixelsize=11:antialias=true:autohint=true"};
 static const char dmenufont[]       = "JetBrainsMonoNL Nerd Font:size=11";
 static const char col_gray1[]       = "#9064e3";
@@ -34,8 +32,9 @@ static const unsigned int borderalpha = OPAQUE;
 
 static const unsigned int alphas[][3]      = {
     /*               fg      bg        border*/
-    [SchemeNorm] = { OPAQUE, baralpha, 0x00U },
-	  [SchemeSel]  = { OPAQUE, baralpha, borderalpha },
+//  [SchemeNorm] = { OPAQUE, baralpha, 0x00U },
+    [SchemeNorm] = { OPAQUE, baralpha, borderalpha },
+    [SchemeSel]  = { OPAQUE, baralpha, borderalpha },
 };
 
 static const char *const autostart[] = {
@@ -43,7 +42,7 @@ static const char *const autostart[] = {
 	NULL /* terminate */
 };
 
-/* tagging */
+/* tagging */ // TODO show all characters of my nerd font and finalize this list
 static const char *tags[] = { "󰣇", "󰈹", "", "", "", "", ""};
 
 static const Rule rules[] = {
