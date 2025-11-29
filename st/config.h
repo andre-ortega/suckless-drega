@@ -133,7 +133,7 @@ static const char *colorname[] = {
 	[255] = 0,
 	/* more colors can be added after 255 to use with DefaultXX */
 //"#e8b390", /* 256 -> cursor */
-  "#dbbf9e", /* 256 -> cursor */
+  "#6f1d2b", /* 256 -> cursor color */
 	"#555555", /* 257 -> rev cursor*/
 	"#282828", /* 258 -> bg */
 	"#ebdbb2", /* 259 -> fg */
@@ -275,8 +275,8 @@ static Shortcut shortcuts[] = {
 //{ MODKEY,               XK_Down,        kscrolldown,    {.i =  1} },
 	{ MODKEY,               XK_u,           kscrollup,      {.i = -1} },
 	{ MODKEY,               XK_d,           kscrolldown,    {.i = -1} },
-	{ MODKEY,		XK_z,		changealpha,	{.f = -0.05} },
-	{ MODKEY,		XK_x,		changealpha,	{.f = +0.05} },
+	{ MODKEY,		            XK_z,		        changealpha,	  {.f = -0.05} },
+	{ MODKEY,		            XK_x,		        changealpha,	  {.f = +0.05} },
 	{ TERMMOD,              XK_Up,          zoom,           {.f = +1} },
 	{ TERMMOD,              XK_Down,        zoom,           {.f = -1} },
 	{ TERMMOD,              XK_K,           zoom,           {.f = +1} },
