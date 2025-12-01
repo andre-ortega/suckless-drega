@@ -1,0 +1,45 @@
+diff --git a/lua/lualine/config.lua b/lua/lualine/config.lua
+index 8059401..64280aa 100644
+--- a/lua/lualine/config.lua
++++ b/lua/lualine/config.lua
+@@ -9,9 +9,9 @@ local modules = require('lualine_require').lazy_require {
+ local config = {
+   options = {
+     icons_enabled = true,
+-    theme = 'auto',
++    theme = '16color',
+     component_separators = { left = '', right = '' },
+-    section_separators = { left = '', right = '' },
++    section_separators = { left = '', right = '' },
+     disabled_filetypes = {
+       statusline = {},
+       winbar = {},
+diff --git a/lua/lualine/themes/16color.lua b/lua/lualine/themes/16color.lua
+index fe093a3..f04411e 100644
+--- a/lua/lualine/themes/16color.lua
++++ b/lua/lualine/themes/16color.lua
+@@ -23,15 +23,17 @@ local colors = {
+ 
+ return {
+   normal = {
+-    a = { fg = colors.white, bg = colors.blue, gui = 'bold' },
+-    b = { fg = colors.white, bg = colors.gray },
+-    c = { fg = colors.silver, bg = colors.black },
++    a = { fg = colors.black, bg = colors.green },
++    b = { fg = colors.green, bg = colors.default },
++--  b = { fg = colors.green, bg = colors.black },
++    c = { fg = colors.green, bg = colors.default },
++--  c = { fg = colors.green, bg = colors.black },
+   },
+-  insert = { a = { fg = colors.white, bg = colors.green, gui = 'bold' } },
+-  visual = { a = { fg = colors.white, bg = colors.purple, gui = 'bold' } },
+-  replace = { a = { fg = colors.white, bg = colors.red, gui = 'bold' } },
++  insert = { a = { fg = colors.black, bg = colors.red } },
++  visual = { a = { fg = colors.black, bg = colors.purple } },
++  replace = { a = { fg = colors.black, bg = colors.green } },
+   inactive = {
+-    a = { fg = colors.silver, bg = colors.gray, gui = 'bold' },
++    a = { fg = colors.silver, bg = colors.gray, },
+     b = { fg = colors.gray, bg = colors.black },
+     c = { fg = colors.silver, bg = colors.black },
+   },

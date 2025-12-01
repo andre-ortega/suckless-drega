@@ -24,6 +24,9 @@ https://github.com/user-attachments/assets/c07f27e2-9173-4dd9-99bb-a6f63b1f210f
 8. [Spicetify](https://spicetify.app/) (Spotify customization)
 9. [Python-pywal](https://github.com/dylanaraps/pywal)
 10. Git
+11. NVIM with Lualine
+12. Picom
+13. ST (Simple/Suckless Terminal)
 
 # Installation
 1. Install your preferred Nerd Fonts. I used Lekton, Ubuntu, Hack and Monofur.
@@ -59,3 +62,6 @@ https://github.com/user-attachments/assets/c07f27e2-9173-4dd9-99bb-a6f63b1f210f
 8. Install [starship](https://starship.rs/) and copy the .toml file into .config `cp starship.toml ~/.config`   
 9. cd into the dwm, st and dmenu folders and `make` and `make clean install`
 10. You can also copy the ranger config files from the Suckless folder into your own ranger config folder if you want this look. And some shortcuts.
+11. Lualine diff/patch patch file should be applied here:
+
+        /home/roe/git/lualine-fork
