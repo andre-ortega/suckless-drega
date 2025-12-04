@@ -1,0 +1,8 @@
+
+PATCHES
+
+alpha
+changealpha MANUAL
+xresources
+anysize
+blinkingcursor MANUAL
