@@ -25,6 +25,11 @@ https://github.com/user-attachments/assets/c07f27e2-9173-4dd9-99bb-a6f63b1f210f
 9. [Python-pywal](https://github.com/dylanaraps/pywal)
 10. Git
 11. NVIM with Lualine
+
+    cp sarax_lualine.diff $HOME/.local/share/nvim/lazy/lualine.nvim
+    cd $HOME/.local/share/nvim/lazy/lualine.nvim
+    patch -i sarax_lualine.diff
+
 12. Picom
 13. ST (Simple/Suckless Terminal)
 
