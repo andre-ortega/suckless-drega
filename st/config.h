@@ -137,7 +137,7 @@ static const char *colorname[] = {
 unsigned int defaultfg = 258;
 unsigned int defaultbg = 259;
 //unsigned int defaultcs = 256; // white
-unsigned int defaultcs = 1;
+unsigned int defaultcs = 7;     // custom
 static unsigned int defaultrcs = 257;
 
 /*
@@ -253,7 +253,8 @@ static Shortcut shortcuts[] = {
   { MODKEY,               XK_z,           chgalpha,       {.f = -0.05} }, /* Decrease opacity */
   { MODKEY,               XK_x,           chgalpha,       {.f = +0.05} }, /* Increase opacity */
 //{ MODKEY,               XK_bracketright,chgalpha,       {.f =  0} }, /* Reset opacity */
-  { Mod4Mask,             XK_c,           ttysend,        {.s =  "$HOME/git/title-sara/sara\n"} },
+  { Mod4Mask,             XK_c,           ttysend,        {.s =  "$HOME/git/title-sara/sara -f white -b black\n"} },
+  { Mod4Mask,             XK_m,           ttysend,        {.s =  "make\n"} },
 };
 
 /*
