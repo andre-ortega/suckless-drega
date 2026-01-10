@@ -41,11 +41,13 @@ FILE_EXTENSION_LOWER="$(printf "%s" "${FILE_EXTENSION}" | tr '[:upper:]' '[:lowe
 ## Settings
 HIGHLIGHT_SIZE_MAX=262143  # 256KiB
 HIGHLIGHT_TABWIDTH=${HIGHLIGHT_TABWIDTH:-8}
-HIGHLIGHT_STYLE=${HIGHLIGHT_STYLE:-pablo}
+HIGHLIGHT_STYLE=${HIGHLIGHT_STYLE:-peachpuff}
 HIGHLIGHT_OPTIONS="--replace-tabs=${HIGHLIGHT_TABWIDTH} --style=${HIGHLIGHT_STYLE} ${HIGHLIGHT_OPTIONS:-}"
 PYGMENTIZE_STYLE=${PYGMENTIZE_STYLE:-autumn}
 OPENSCAD_IMGSIZE=${RNGR_OPENSCAD_IMGSIZE:-1000,1000}
 OPENSCAD_COLORSCHEME=${RNGR_OPENSCAD_COLORSCHEME:-Tomorrow Night}
+
+highlight_format='ansi'
 
 handle_extension() {
     case "${FILE_EXTENSION_LOWER}" in
@@ -115,6 +117,10 @@ handle_extension() {
             mediainfo "${FILE_PATH}" && exit 5
             exiftool "${FILE_PATH}" && exit 5
             ;; # Continue with next handler on failure
+
+        *)
+          bat --style plain --pager never "${FILE_PATH}" && exit 5
+          ;;
     esac
 }
 
@@ -139,6 +145,11 @@ handle_image() {
         #           && exit 6 || exit 1;;
 
         ## Image
+        image/gif)
+            sxiv -t "${FILE_PATH}" && exit 7
+            exit 2;;
+
+
         image/*)
             local orientation
             orientation="$( identify -format '%[EXIF:Orientation]\n' -- "${FILE_PATH}" )"
@@ -154,10 +165,10 @@ handle_image() {
             exit 7;;
 
         ## Video
-        # video/*)
-        #     # Thumbnail
-        #     ffmpegthumbnailer -i "${FILE_PATH}" -o "${IMAGE_CACHE_PATH}" -s 0 && exit 6
-        #     exit 1;;
+        video/*)
+            # Thumbnail
+            ffmpegthumbnailer -i "${FILE_PATH}" -o "${IMAGE_CACHE_PATH}" -s 0 && exit 6
+            exit 1;;
 
         ## PDF
         # application/pdf)
@@ -297,7 +308,7 @@ handle_mime() {
             fi
             if [[ "$( tput colors )" -ge 256 ]]; then
                 local pygmentize_format='terminal256'
-                local highlight_format='xterm256'
+                local highlight_format='ansi'
             else
                 local pygmentize_format='terminal'
                 local highlight_format='ansi'
@@ -337,7 +348,6 @@ handle_fallback() {
     echo '----- File Type Classification -----' && file --dereference --brief -- "${FILE_PATH}" && exit 5
     exit 1
 }
-
 
 MIMETYPE="$( file --dereference --brief --mime-type -- "${FILE_PATH}" )"
 if [[ "${PV_IMAGE_ENABLED}" == 'True' ]]; then
