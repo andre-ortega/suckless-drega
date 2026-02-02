@@ -14,7 +14,9 @@ static const char *fonts[] = {
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 
-#include "/home/roe/git/suckless-drega/dmenu/colors-wal-dmenu.h"
+//#include "/home/roe/git/suckless-drega/dmenu/colors-wal-dmenu.h"
+//#include "/home/roe/.cache/wal/colors-wal-dmenu.h"
+#include "colors-wal-dmenu.h"
 
 static const unsigned int alphas[SchemeLast][2] = {
 	[SchemeNorm] = { OPAQUE, alpha },
