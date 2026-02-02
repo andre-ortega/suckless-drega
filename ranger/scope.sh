@@ -41,13 +41,11 @@ FILE_EXTENSION_LOWER="$(printf "%s" "${FILE_EXTENSION}" | tr '[:upper:]' '[:lowe
 ## Settings
 HIGHLIGHT_SIZE_MAX=262143  # 256KiB
 HIGHLIGHT_TABWIDTH=${HIGHLIGHT_TABWIDTH:-8}
-HIGHLIGHT_STYLE=${HIGHLIGHT_STYLE:-peachpuff}
+HIGHLIGHT_STYLE=${HIGHLIGHT_STYLE:-pablo}
 HIGHLIGHT_OPTIONS="--replace-tabs=${HIGHLIGHT_TABWIDTH} --style=${HIGHLIGHT_STYLE} ${HIGHLIGHT_OPTIONS:-}"
 PYGMENTIZE_STYLE=${PYGMENTIZE_STYLE:-autumn}
 OPENSCAD_IMGSIZE=${RNGR_OPENSCAD_IMGSIZE:-1000,1000}
 OPENSCAD_COLORSCHEME=${RNGR_OPENSCAD_COLORSCHEME:-Tomorrow Night}
-
-highlight_format='ansi'
 
 handle_extension() {
     case "${FILE_EXTENSION_LOWER}" in
@@ -73,7 +71,7 @@ handle_extension() {
               fmt -w "${PV_WIDTH}" && exit 5
             mutool draw -F txt -i -- "${FILE_PATH}" 1-10 | \
               fmt -w "${PV_WIDTH}" && exit 5
-            exiftool "${FILE_PATH}" && exit 5
+#           exiftool "${FILE_PATH}" && exit 5
             exit 1;;
 
         ## BitTorrent
@@ -115,12 +113,8 @@ handle_extension() {
         ## by file(1).
         dff|dsf|wv|wvc)
             mediainfo "${FILE_PATH}" && exit 5
-            exiftool "${FILE_PATH}" && exit 5
+#           exiftool "${FILE_PATH}" && exit 5
             ;; # Continue with next handler on failure
-
-        *)
-          bat --style plain --pager never "${FILE_PATH}" && exit 5
-          ;;
     esac
 }
 
@@ -145,20 +139,15 @@ handle_image() {
         #           && exit 6 || exit 1;;
 
         ## Image
-        image/gif)
-            sxiv -t "${FILE_PATH}" && exit 7
-            exit 2;;
-
-
         image/*)
             local orientation
-            orientation="$( identify -format '%[EXIF:Orientation]\n' -- "${FILE_PATH}" )"
+            orientation="$( identify -format '%[EXIF:Orientation]\n' -- "${FILE_PATH}" 2>/dev/null )"
             ## If orientation data is present and the image actually
             ## needs rotating ("1" means no rotation)...
-            if [[ -n "$orientation" && "$orientation" != 1 ]]; then
-                ## ...auto-rotate the image according to the EXIF data.
-                convert -- "${FILE_PATH}" -auto-orient "${IMAGE_CACHE_PATH}" && exit 6
-            fi
+#           if [[ -n "$orientation" && "$orientation" != 1 ]]; then
+#               ## ...auto-rotate the image according to the EXIF data.
+#               convert -- "${FILE_PATH}" -auto-orient "${IMAGE_CACHE_PATH}" && exit 6
+#           fi
 
             ## `w3mimgdisplay` will be called for all images (unless overriden
             ## as above), but might fail for unsupported types.
@@ -308,7 +297,7 @@ handle_mime() {
             fi
             if [[ "$( tput colors )" -ge 256 ]]; then
                 local pygmentize_format='terminal256'
-                local highlight_format='ansi'
+                local highlight_format='xterm256'
             else
                 local pygmentize_format='terminal'
                 local highlight_format='ansi'
@@ -326,20 +315,20 @@ handle_mime() {
         image/vnd.djvu)
             ## Preview as text conversion (requires djvulibre)
             djvutxt "${FILE_PATH}" | fmt -w "${PV_WIDTH}" && exit 5
-            exiftool "${FILE_PATH}" && exit 5
+#           exiftool "${FILE_PATH}" && exit 5
             exit 1;;
 
         ## Image
         image/*)
             ## Preview as text conversion
-            # img2txt --gamma=0.6 --width="${PV_WIDTH}" -- "${FILE_PATH}" && exit 4
-            exiftool "${FILE_PATH}" && exit 5
+            img2txt --gamma=0.6 --width="${PV_WIDTH}" -- "${FILE_PATH}" && exit 4
+            #exiftool "${FILE_PATH}" 2>&1 >dev/null && exit 5
             exit 1;;
 
         ## Video and audio
         video/* | audio/*)
             mediainfo "${FILE_PATH}" && exit 5
-            exiftool "${FILE_PATH}" && exit 5
+#           exiftool "${FILE_PATH}" && exit 5
             exit 1;;
     esac
 }
@@ -348,6 +337,7 @@ handle_fallback() {
     echo '----- File Type Classification -----' && file --dereference --brief -- "${FILE_PATH}" && exit 5
     exit 1
 }
+
 
 MIMETYPE="$( file --dereference --brief --mime-type -- "${FILE_PATH}" )"
 if [[ "${PV_IMAGE_ENABLED}" == 'True' ]]; then
