@@ -71,7 +71,7 @@ handle_extension() {
               fmt -w "${PV_WIDTH}" && exit 5
             mutool draw -F txt -i -- "${FILE_PATH}" 1-10 | \
               fmt -w "${PV_WIDTH}" && exit 5
-#           exiftool "${FILE_PATH}" && exit 5
+            exiftool "${FILE_PATH}" && exit 5
             exit 1;;
 
         ## BitTorrent
@@ -113,7 +113,7 @@ handle_extension() {
         ## by file(1).
         dff|dsf|wv|wvc)
             mediainfo "${FILE_PATH}" && exit 5
-#           exiftool "${FILE_PATH}" && exit 5
+            exiftool "${FILE_PATH}" && exit 5
             ;; # Continue with next handler on failure
     esac
 }
@@ -144,10 +144,10 @@ handle_image() {
             orientation="$( identify -format '%[EXIF:Orientation]\n' -- "${FILE_PATH}" 2>/dev/null )"
             ## If orientation data is present and the image actually
             ## needs rotating ("1" means no rotation)...
-#           if [[ -n "$orientation" && "$orientation" != 1 ]]; then
-#               ## ...auto-rotate the image according to the EXIF data.
-#               convert -- "${FILE_PATH}" -auto-orient "${IMAGE_CACHE_PATH}" && exit 6
-#           fi
+            if [[ -n "$orientation" && "$orientation" != 1 ]]; then
+                ## ...auto-rotate the image according to the EXIF data.
+                convert -- "${FILE_PATH}" -auto-orient "${IMAGE_CACHE_PATH}" && exit 6
+            fi
 
             ## `w3mimgdisplay` will be called for all images (unless overriden
             ## as above), but might fail for unsupported types.
@@ -315,20 +315,20 @@ handle_mime() {
         image/vnd.djvu)
             ## Preview as text conversion (requires djvulibre)
             djvutxt "${FILE_PATH}" | fmt -w "${PV_WIDTH}" && exit 5
-#           exiftool "${FILE_PATH}" && exit 5
+            exiftool "${FILE_PATH}" && exit 5
             exit 1;;
 
         ## Image
         image/*)
             ## Preview as text conversion
-            img2txt --gamma=0.6 --width="${PV_WIDTH}" -- "${FILE_PATH}" && exit 4
-            #exiftool "${FILE_PATH}" 2>&1 >dev/null && exit 5
+            #img2txt --gamma=0.6 --width="${PV_WIDTH}" -- "${FILE_PATH}" && exit 4
+            exiftool "${FILE_PATH}" 2>&1 >dev/null && exit 5
             exit 1;;
 
         ## Video and audio
         video/* | audio/*)
             mediainfo "${FILE_PATH}" && exit 5
-#           exiftool "${FILE_PATH}" && exit 5
+            exiftool "${FILE_PATH}" && exit 5
             exit 1;;
     esac
 }
