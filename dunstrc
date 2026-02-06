@@ -352,7 +352,7 @@
 
 [urgency_normal]
     background = "#060709"
-    foreground = "#ffffff"
+    foreground = "#888888"
     timeout = 5
     override_pause_level = 30
     # Icon for notifications with normal urgency
@@ -360,7 +360,7 @@
 
 [urgency_critical]
     background = "#060709"
-    foreground = "#ffffff"
+    foreground = "#888888"
     frame_color = "#ff0000"
     timeout = 0
     override_pause_level = 60
