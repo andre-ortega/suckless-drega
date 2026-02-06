@@ -8,4 +8,3 @@ mkdir -p $TARGET
 cd $TARGET
 ln -s $SOURCE/config.ini
 ln -s $SOURCE/bar.sh
-./bar.sh
