@@ -1,0 +1,15 @@
+diff --git a/plugins/git/git.plugin.zsh b/plugins/git/git.plugin.zsh
+index 9ef60d6..f13912e 100644
+--- a/plugins/git/git.plugin.zsh
++++ b/plugins/git/git.plugin.zsh
+@@ -265,7 +265,9 @@ alias gmum='git merge upstream/$(git_main_branch)'
+ alias gmtl='git mergetool --no-prompt'
+ alias gmtlvim='git mergetool --no-prompt --tool=vimdiff'
+ 
+-alias gl='git pull'
++alias gl="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' HEAD~10..HEAD"
++alias gl2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' HEAD~20..HEAD"
++alias gla="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+ alias gpr='git pull --rebase'
+ alias gprv='git pull --rebase -v'
+ alias gpra='git pull --rebase --autostash'
