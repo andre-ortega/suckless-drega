@@ -1,3 +1,90 @@
+diff --git a/lib/grep.zsh b/lib/grep.zsh
+index 1a70de7..f86d8c9 100644
+--- a/lib/grep.zsh
++++ b/lib/grep.zsh
+@@ -1,41 +1,41 @@
+-__GREP_CACHE_FILE="$ZSH_CACHE_DIR"/grep-alias
+-
+-# See if there's a cache file modified in the last day
+-__GREP_ALIAS_CACHES=("$__GREP_CACHE_FILE"(Nm-1))
+-if [[ -n "$__GREP_ALIAS_CACHES" ]]; then
+-    source "$__GREP_CACHE_FILE"
+-else
+-    grep-flags-available() {
+-        command grep "$@" "" &>/dev/null <<< ""
+-    }
+-
+-    # Ignore these folders (if the necessary grep flags are available)
+-    EXC_FOLDERS="{.bzr,CVS,.git,.hg,.svn,.idea,.tox,.venv,venv}"
+-
+-    # Check for --exclude-dir, otherwise check for --exclude. If --exclude
+-    # isn't available, --color won't be either (they were released at the same
+-    # time (v2.5): https://git.savannah.gnu.org/cgit/grep.git/tree/NEWS?id=1236f007
+-    if grep-flags-available --color=auto --exclude-dir=.cvs; then
+-        GREP_OPTIONS="--color=auto --exclude-dir=$EXC_FOLDERS"
+-    elif grep-flags-available --color=auto --exclude=.cvs; then
+-        GREP_OPTIONS="--color=auto --exclude=$EXC_FOLDERS"
+-    fi
+-
+-    if [[ -n "$GREP_OPTIONS" ]]; then
+-        # export grep, egrep and fgrep settings
+-        alias grep="grep $GREP_OPTIONS"
+-        alias egrep="grep -E"
+-        alias fgrep="grep -F"
+-
+-        # write to cache file if cache directory is writable
+-        if [[ -w "$ZSH_CACHE_DIR" ]]; then
+-            alias -L grep egrep fgrep >| "$__GREP_CACHE_FILE"
+-        fi
+-    fi
+-
+-    # Clean up
+-    unset GREP_OPTIONS EXC_FOLDERS
+-    unfunction grep-flags-available
+-fi
+-
+-unset __GREP_CACHE_FILE __GREP_ALIAS_CACHES
++#__GREP_CACHE_FILE="$ZSH_CACHE_DIR"/grep-alias
++#
++## See if there's a cache file modified in the last day
++#__GREP_ALIAS_CACHES=("$__GREP_CACHE_FILE"(Nm-1))
++#if [[ -n "$__GREP_ALIAS_CACHES" ]]; then
++#    source "$__GREP_CACHE_FILE"
++#else
++#    grep-flags-available() {
++#        command grep "$@" "" &>/dev/null <<< ""
++#    }
++#
++#    # Ignore these folders (if the necessary grep flags are available)
++#    EXC_FOLDERS="{.bzr,CVS,.git,.hg,.svn,.idea,.tox,.venv,venv}"
++#
++#    # Check for --exclude-dir, otherwise check for --exclude. If --exclude
++#    # isn't available, --color won't be either (they were released at the same
++#    # time (v2.5): https://git.savannah.gnu.org/cgit/grep.git/tree/NEWS?id=1236f007
++#    if grep-flags-available --color=auto --exclude-dir=.cvs; then
++#        GREP_OPTIONS="--color=auto --exclude-dir=$EXC_FOLDERS"
++#    elif grep-flags-available --color=auto --exclude=.cvs; then
++#        GREP_OPTIONS="--color=auto --exclude=$EXC_FOLDERS"
++#    fi
++#
++#    if [[ -n "$GREP_OPTIONS" ]]; then
++#        # export grep, egrep and fgrep settings
++#        alias grep="grep $GREP_OPTIONS"
++#        alias egrep="grep -E"
++#        alias fgrep="grep -F"
++#
++#        # write to cache file if cache directory is writable
++#        if [[ -w "$ZSH_CACHE_DIR" ]]; then
++#            alias -L grep egrep fgrep >| "$__GREP_CACHE_FILE"
++#        fi
++#    fi
++#
++#    # Clean up
++#    unset GREP_OPTIONS EXC_FOLDERS
++#    unfunction grep-flags-available
++#fi
++#
++#unset __GREP_CACHE_FILE __GREP_ALIAS_CACHES
 diff --git a/plugins/git/git.plugin.zsh b/plugins/git/git.plugin.zsh
 index 9ef60d6..f13912e 100644
 --- a/plugins/git/git.plugin.zsh
@@ -13,3 +100,14 @@ index 9ef60d6..f13912e 100644
  alias gpr='git pull --rebase'
  alias gprv='git pull --rebase -v'
  alias gpra='git pull --rebase --autostash'
+diff --git a/themes/fwalch.zsh-theme b/themes/fwalch.zsh-theme
+index 33f851c..1246691 100644
+--- a/themes/fwalch.zsh-theme
++++ b/themes/fwalch.zsh-theme
+@@ -1,4 +1,5 @@
+-PROMPT='%{$fg_bold[green]%} %{$fg[cyan]%}%c%{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
++#PROMPT='%{$fg_bold[green]%} %{$fg[cyan]%}%c%{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
++PROMPT='%{$fg[green]%} %{$fg[cyan]%}%c%{$fg[blue]%}$(git_prompt_info)%{$fg[blue]%} % %{$reset_color%}'
+ 
+ ZSH_THEME_GIT_PROMPT_PREFIX=" (%{$fg[red]%}"
+ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
