@@ -10,8 +10,10 @@ sleep 1
 
 # Launch bar for primary monitor
 #MONITOR=eDP-1 polybar left --config=$HOME/.config/polybar/config.ini &
-MONITOR=eDP-1 polybar center --config=$HOME/.config/polybar/config.ini &
+#MONITOR=eDP-1 polybar center --config=$HOME/.config/polybar/config.ini &
+MONITOR=HDMI-A-0 polybar cyberdeck-center --config=$HOME/.config/polybar/config.ini &
+MONITOR=DisplayPort-1 polybar displayport-center --config=$HOME/.config/polybar/config.ini &
 #MONITOR=eDP-1 polybar right --config=$HOME/.config/polybar/config.ini &
 
 # Launch bar for secondary monitor
-MONITOR=HDMI-1 polybar secondary-center --config=$HOME/.config/polybar/config.ini &
+#MONITOR=HDMI-1 polybar secondary-center --config=$HOME/.config/polybar/config.ini &
