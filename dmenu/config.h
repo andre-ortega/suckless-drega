@@ -9,7 +9,7 @@ static const float menu_height_ratio = 2.0f;  /* This is the ratio used in the o
 static const int user_bh = 5;               /* add an defined amount of pixels to the bar height */
 
 static const char *fonts[] = {
-	"JetBrainsMonoNL Nerd Font:size=12",
+	"JetBrainsMonoNL Nerd Font:size=22",
 	"JoyPixels:pixelsize=12:antialias=true:autohint=true"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */

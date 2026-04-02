@@ -85,6 +85,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", NULL};
 static const char *termcmd[]  = { "st", NULL };
 static const char *firefoxcmd[]  = { "firefox", NULL };
+static const char *xbcmd[]  = { "xb", NULL };
 
 /* Knob vol */
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
@@ -101,6 +102,7 @@ static const Key keys[] = {
   { MODKEY,                       XK_BackSpace,spawn,        {.v = dmenucmd } },
 	{ MODKEY,                       XK_space,  spawn,          {.v = termcmd } },
   { MODKEY,                       XK_p,      spawn,          {.v = firefoxcmd } },
+  { MODKEY,                       XK_o,      spawn,          {.v = xbcmd } },
 //{ MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("st -e ranger")},
   { MODKEY,                       XK_f,      zoom,           {0} },
 //{ MODKEY|ShiftMask,             XK_F10,    spawn,          SHCMD("st -e cava")},
@@ -133,7 +135,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-  { MODKEY|ShiftMask,             XK_y,      spawn,          SHCMD("flameshot gui") },
+//{ MODKEY|ShiftMask,             XK_y,      spawn,          SHCMD("flameshot gui") },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
   { MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
