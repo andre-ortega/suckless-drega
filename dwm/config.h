@@ -91,6 +91,10 @@ static const char *xbcmd[]  = { "xb", NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
 static const char *upvol[] = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "+1%", NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "-1%", NULL };
+static const char *audioplay[] = { "/usr/bin/mpc", "toggle", NULL };
+static const char *audiostop[] = { "/usr/bin/mpc", "stop", NULL };
+static const char *audionext[] = { "/usr/bin/mpc", "next", NULL };
+static const char *audioprev[] = { "/usr/bin/mpc", "prev", NULL };
 
 #include "movestack.c"
 static const Key keys[] = {
@@ -98,6 +102,10 @@ static const Key keys[] = {
   { 0,              XF86XK_AudioMute,        spawn,          {.v = mutevol } },
   { 0,              XF86XK_AudioRaiseVolume, spawn,          {.v = upvol } },
   { 0,              XF86XK_AudioLowerVolume, spawn,          {.v = downvol } },
+  { 0,              XF86XK_AudioPlay,        spawn,          {.v = audioplay } },
+  { 0,              XF86XK_AudioStop,        spawn,          {.v = audiostop } },
+  { 0,              XF86XK_AudioPrev,        spawn,          {.v = audioprev } },
+  { 0,              XF86XK_AudioNext,        spawn,          {.v = audionext } },
 //{ 0,                            XK_Super_L,spawn,          {.v = dmenucmd } },
   { MODKEY,                       XK_BackSpace,spawn,        {.v = dmenucmd } },
 	{ MODKEY,                       XK_space,  spawn,          {.v = termcmd } },
