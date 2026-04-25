@@ -1,0 +1,1 @@
+colors-wal-dmenu.h
