@@ -103,6 +103,7 @@ static const Key keys[] = {
   { 0,              XF86XK_AudioRaiseVolume, spawn,          {.v = upvol } },
   { 0,              XF86XK_AudioLowerVolume, spawn,          {.v = downvol } },
   { 0,              XF86XK_AudioPlay,        spawn,          {.v = audioplay } },
+  { 0,              XF86XK_AudioPause,       spawn,          {.v = audioplay } },
   { 0,              XF86XK_AudioStop,        spawn,          {.v = audiostop } },
   { 0,              XF86XK_AudioPrev,        spawn,          {.v = audioprev } },
   { 0,              XF86XK_AudioNext,        spawn,          {.v = audionext } },
