@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-//static char *font = "JetBrainsMonoNL Nerd Font:pixelsize=18:antialias=true:autohint=true";
-static char *font = "JetBrainsMonoNL Nerd Font:pixelsize=24:antialias=true:autohint=true";
+static char *font = "JetBrainsMonoNL Nerd Font:pixelsize=18:antialias=true:autohint=true";
+//static char *font = "JetBrainsMonoNL Nerd Font:pixelsize=24:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -97,7 +97,7 @@ unsigned int tabspaces = 8;
 float alpha_def;
 
 /* bg opacity */
-float alpha = 1.0;
+float alpha = .8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {

@@ -13,6 +13,7 @@ sleep 1
 #MONITOR=eDP-1 polybar center --config=$HOME/.config/polybar/config.ini &
 MONITOR=HDMI-A-0 polybar cyberdeck-center --config=$HOME/.config/polybar/config.ini &
 MONITOR=DisplayPort-1 polybar displayport-center --config=$HOME/.config/polybar/config.ini &
+MONITOR=DisplayPort-2 polybar glasses-center --config=$HOME/.config/polybar/config.ini &
 #MONITOR=eDP-1 polybar right --config=$HOME/.config/polybar/config.ini &
 
 # Launch bar for secondary monitor
